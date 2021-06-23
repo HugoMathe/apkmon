@@ -16,6 +16,51 @@ type Pokemon = {
   stats:number[];
   selectedMoves:string[];
 };
+type evolution={
+  id:number;
+  chain:string;
+  evolves_to:string;
+  species:string[];
+}
+type PokemonSpecies = {
+  evolution_chain:string;
+  forms:string;
+  uniqueId:string;
+  id:number;
+  img:string;
+  description:string;
+  types:string[];
+  /* (Rodrigo): uma soluçao ideal é colocar a array abaixo *fora* do objeto e fazer um moves.
+  service pra tratar os moves de cada obj Pokemon baseados no seu id, já que vai dar 
+  trabalho popular isso daqui pra poder enfiar na pokemonParty, mas da pra fazer
+  */
+};
+
+export class EvolucaoComponent implements OnInit {
+  constructor() { }
+  private evolution = {
+    evolves_to: ""
+  } as evolution;
+  ngOnInit() {}
+  public async searchEvo(species: string) {
+    const result = await PokeAPI.PokemonSpecies.resolve(species);
+    const  poke = await PokeAPI.EvolutionChain.resolve(result.id);
+    console.log(poke.id.toString);
+    this.evolution.evolves_to=result.name[4];
+  
+    let naosei = true;
+    const {name}  = {...result};
+    this.evolution.species = [];
+    this.evolution.species=[];
+    for(let i = 0;i<this.evolution.id;i++){
+      this.evolution.species[i] = result.evolution_chain[i];
+      }
+    }
+
+  
+
+}
+
 
 @Injectable({
   providedIn: 'root'

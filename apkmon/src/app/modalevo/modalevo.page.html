@@ -1,20 +1,62 @@
 
 
 <ion-content padding color = "danger">
-  <ion-item>
-    <ion-label>Evolutions</ion-label>
+  <ion-item >
+    <ion-label>Items</ion-label>
     <ion-button (click) = "CloseModal()" size = "small"  slot ="end">Close</ion-button>
   </ion-item>
+
+  <ion-content [fullscreen]="true">
     <!--Pokemon View-->
-    <center><img class="image-base" src="{{Pokemon.img}}" height="30%" width="40%"></center>
-    <!--Pokemon Types-->
-
-
-    <center id="type-container">
-      <div *ngFor="let n of Pokemon.types" class="types {{n}}">{{n}}</div>
-    </center>
-    <center>
- 
-  </center>
-
+    <center><img class="image-overlay" src="https://pngimage.net/wp-content/uploads/2018/06/glass-png-transparent-3.png"></center>
+    <center><img class="image-base" src="{{img}}" height="30%" width="40%"></center>
+  
+    <ion-list class='stat-list'>
+      <ion-item class="stat-item">
+        HP: <span class="stat-value">{{stats[0]}}</span>
+        <ion-button color="success" slot="end" (click)="addPoint(0)">
+          <input type="image" src="https://pokedats.weebly.com/uploads/7/4/7/2/7472125/700061824.png?70" style="width: 20px;"/>
+        </ion-button>
+        <ion-button color='danger' slot="end" (click)="dimPoint(6)"style="width: 20%;">Leftovers</ion-button>
+      </ion-item>
+      <ion-item class="stat-item">
+        Attack: <span class="stat-value">{{stats[1]}}</span>
+        <ion-button color="success" slot="end" (click)="addPoint(1)">
+          <input type="image" src="https://pokedats.weebly.com/uploads/7/4/7/2/7472125/759728096.png" style="width: 20px;"/>
+        </ion-button>
+        <ion-button color='danger'style="width: 20%;" slot="end" (click)="dimPoint(1)">Choice Band</ion-button>
+      </ion-item>
+      <ion-item class="stat-item">
+        Defense: <span class="stat-value">{{stats[2]}}</span>
+        <ion-button color="success" slot="end" (click)="addPoint(2)">
+          <input type="image" src="https://static.wikia.nocookie.net/pokemon/images/f/f5/Calcium.png/revision/latest/scale-to-width-down/53?cb=20110325230039" style="width: 20px;"/>
+        </ion-button>
+        <ion-button color='danger'style="width: 20%;" slot="end" (click)="dimPoint(6)">Zinc</ion-button>
+      </ion-item>
+      <ion-item class="stat-item">
+        Special Attack: <span class="stat-value">{{stats[3]}}</span>
+        <ion-button color="success" slot="end" (click)="addPoint(3)">
+          <input type="image" src="https://pokedats.weebly.com/uploads/7/4/7/2/7472125/255943815.png?115" style="width: 20px;"/>
+        </ion-button>
+        <ion-button color='danger'style="width: 20%;" slot="end" (click)="dimPoint(6)">Wise Glasses</ion-button>
+      </ion-item>
+      <ion-item class="stat-item">
+        Special Defense: <span class="stat-value">{{stats[4]}}</span>
+        <ion-button color="success" slot="end" (click)="addPoint(4)">
+          <input type="image" src="https://pokedats.weebly.com/uploads/7/4/7/2/7472125/998533052.png?93" style="width: 20px;"/>
+        </ion-button>
+        <ion-button color='danger'style="width: 20%;" slot="end" (click)="dimPoint(6)">Wide Lens</ion-button>
+      </ion-item>
+      <ion-item class="stat-item">
+        Speed: <span class="stat-value">{{stats[5]}}</span>
+        <ion-button color="success" slot='end' (click)="addPoint(5)">
+          <input type="image" src="https://pokedats.weebly.com/uploads/7/4/7/2/7472125/649081032.png?95" style="width: 20px;"/>
+        </ion-button>
+        <ion-button color='danger'style="width: 20%;" slot="end" (click)="dimPoint(6)">Zoom Lens</ion-button>
+      </ion-item>
+  
+    </ion-list>
+    
+  </ion-content>
+  
 </ion-content>

@@ -102,8 +102,7 @@ export class Tab5Page {
       stats: this.stats,
       selectedMoves: this.selectedMoves
     }
-    console.log(PokemonToAdd);
-    this.pokeService.addPokemonToParty(PokemonToAdd);
+  
   }
     //(Rodrigo): isso é uma puta gambiarra que eu fiz pra atualizar o Pokemon
   //na tab PokeEdit, alguém pelo amor de deus pensa em algo melhor que isso

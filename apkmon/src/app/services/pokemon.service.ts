@@ -2,13 +2,17 @@ import PokeAPI from 'pokeapi-typescript';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import {OnInit} from '@angular/core';
+
 type Pokemon = {
+  forms:string;
   uniqueId:string;
   id:string;
   img:string;
   description:string;
   types:string[];
-  /* (Rodrigo): uma soluçao ideal é colocar a array abaixo *fora* do objeto e fazer um moves.service pra tratar os moves de cada obj Pokemon baseados no seu id, já que vai dar trabalho popular isso daqui pra poder enfiar na pokemonParty, mas da pra fazer
+  /* (Rodrigo): uma soluçao ideal é colocar a array abaixo *fora* do objeto e fazer um moves.
+  service pra tratar os moves de cada obj Pokemon baseados no seu id, já que vai dar 
+  trabalho popular isso daqui pra poder enfiar na pokemonParty, mas da pra fazer
   */
   availableMoves:string[];
   stats:number[];
@@ -28,8 +32,7 @@ export class PokemonService{
   
   // a ideia é mandar essa array de Pokemons pra localStorage e *depois* iterar pela lista na hora de enviar pro server
   private pokemonParty:Pokemon[] = [
-    {uniqueId:"P1k4",id:"Pikachu",img:"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",description:"Template Pokémon",types:["electric"],stats:[35,55,40,50,50,90],availableMoves:["Thunder Shock","U-Turn"],selectedMoves:["Tackle","Thunder Shock","Quick Attack", "Earthquake"]}
-  ];
+    ];
   // (Rodrigo): essa função desmonta o obj Pokemon que a API retorna e popula as propriedades do obj Pokemon presente nesse arquivo.
   /*
   (Rodrigo): "nao eh mais fácil só usar o objeto que API retorna?"
@@ -65,11 +68,26 @@ export class PokemonService{
     for(let i = 0;i<stats.length;i++){
        this.Pokemon.stats[i] = stats[i].base_stat;
     }
+    
     console.log(result);
     // console.log(this.Pokemon.stats);
     // console.log(stats);
     // console.log(moves);
     //return result;
+  }
+  public addPoint(stat:number){
+    if(this.Pokemon.stats[stat] == 150){
+      return 0;
+    }
+    let temp = this.Pokemon.stats[stat];
+    this.Pokemon.stats[stat] = temp+1;
+  }
+  public dimPoint(stat:number){
+    if(this.Pokemon.stats[stat] == 0){
+      return 0;
+    }
+    let temp = this.Pokemon.stats[stat];
+    this.Pokemon.stats[stat] = temp-1;
   }
   public deleteFromParty(uniqueId:string){
     for(let i = 0;i<this.pokemonParty.length;i++){
@@ -141,4 +159,7 @@ export class PokemonService{
   public getList(){
     return this.requestedPkmnList;
   }
+  
+
+
 }

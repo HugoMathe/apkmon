@@ -14,8 +14,8 @@ export class ModalpopupPage implements OnInit {
   constructor(private modalController:ModalController) { }
 
   ngOnInit() {
-  }
-  CloseModal()
+   }
+    CloseModal()
   {
     this.modalController.dismiss();
   }

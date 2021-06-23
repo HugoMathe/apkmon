@@ -11,6 +11,7 @@
         <div class="circle-small circle-red"></div>
         <div class="circle-small circle-yellow"></div>
         <div class="circle-small circle-green"></div>
+        
       </ion-col>
       
       </ion-row>
@@ -22,11 +23,14 @@
   <!--Pokemon View-->
   <center><img class="image-overlay" src="https://pngimage.net/wp-content/uploads/2018/06/glass-png-transparent-3.png"></center>
   <center><img class="image-base" src="{{Pokemon.img}}" height="30%" width="40%"></center>
+  
+  
   <!--Pokemon Types-->
   <center id="type-container">
-    <div *ngFor="let n of Pokemon.types" class="types {{n}}">{{n}}</div>
   </center>
-
+  <center>
+  <ion-button (click) = "OpenModal()" size = "small">Itens</ion-button>
+</center>
   <center>
     <h1>Informations</h1>
     <ion-text color="dark">
