@@ -1,0 +1,20 @@
+
+
+<ion-content padding color = "danger">
+  <ion-item>
+    <ion-label>Evolutions</ion-label>
+    <ion-button (click) = "CloseModal()" size = "small"  slot ="end">Close</ion-button>
+  </ion-item>
+    <!--Pokemon View-->
+    <center><img class="image-base" src="{{Pokemon.img}}" height="30%" width="40%"></center>
+    <!--Pokemon Types-->
+
+
+    <center id="type-container">
+      <div *ngFor="let n of Pokemon.types" class="types {{n}}">{{n}}</div>
+    </center>
+    <center>
+ 
+  </center>
+
+</ion-content>
